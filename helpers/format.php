@@ -15,7 +15,7 @@ class Format{
         return $text;
     }
     
-    // kiem tra form trong hay khong trong..
+    // kiem tra form ...
     public  function validation($data){
         $data = trim($data);
         $data = stripcslashes($data);

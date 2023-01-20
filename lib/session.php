@@ -27,7 +27,7 @@ class Session{
     // check phien lam viec co ton tai hay khong
     public static function checkSession(){
         self::init();
-        if (self::get("login")== false) {
+        if (self::get("adminlogin")== false) {
         self::destroy();
         header("Location:login.php");
     }
@@ -36,7 +36,7 @@ class Session{
     // check login
     public static function checkLogin(){
         self::init();
-        if (self::get("login")== true) {
+        if (self::get("adminlogin")== true) {
         header("Location:index.php");
         }
     }
@@ -47,4 +47,4 @@ class Session{
         session_destroy();
         header("Location:login.php");
     }
-}?>
+}
