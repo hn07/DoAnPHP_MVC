@@ -8,7 +8,8 @@ include '../helpers/format.php';
 
 
 <?php
-   class adminlogin{
+class adminlogin
+{
 
     private $db;
     private $fm; //format
@@ -27,15 +28,14 @@ include '../helpers/format.php';
         $adminUser = mysqli_real_escape_string($this->db->link, $adminUser);
         $adminPass = mysqli_real_escape_string($this->db->link, $adminPass);
 
-        if(empty($adminUser) || empty($adminPass)){
+        if (empty($adminUser) || empty($adminPass)) {
             $alert = "User and password not empty";
             return $alert;
-        }
-        else{
+        } else {
             $query = "SELECT * FROM tbl_admin WHERE adminUser = '$adminUser' AND adminPass = '$adminPass'";
             $result = $this->db->select($query);
 
-            if($result != false){
+            if ($result != false) {
                 $value = $result->fetch_assoc(); //hàm tìm nạp một hàng kết quả dưới dạng một mảng kết hợp
 
                 Session::set('adminlogin', true);
@@ -44,16 +44,13 @@ include '../helpers/format.php';
                 Session::set('adminUser', $value['adminUser']);
                 Session::set('adminName', $value['adminName']);
                 header('Location:index.php'); //quay ve trang 
-            }
-            else{
+            } else {
                 $alert = "User or password not match";
                 return $alert;
             }
         }
     }
+}
 
-
-   }
-    
 
 ?>
