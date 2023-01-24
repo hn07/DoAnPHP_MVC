@@ -6,7 +6,7 @@ include '../helpers/format.php';
 
 
 <?php
-class category
+class brand
 {
 
     private $db;
@@ -16,24 +16,24 @@ class category
         $this->db = new Database();
         $this->fm = new Format();
     }
-    public function insert_category($catName)
+    public function insert_brand($brandName)
     {
-        // kiem tra hop le cua catName
-        $catName = $this->fm->validation($catName);
-        $catName = mysqli_real_escape_string($this->db->link, $catName);
+        // kiem tra hop le cua brandName
+        $brandName = $this->fm->validation($brandName);
+        $brandName = mysqli_real_escape_string($this->db->link, $brandName);
 
-        if (empty($catName)) {
-            $alert = "Category must be not empty";
+        if (empty($brandName)) {
+            $alert = "Brand must be not empty";
             return $alert;
         } else {
-            $query = "INSERT INTO tbl_category(catName) VALUES ('$catName')";
+            $query = "INSERT INTO tbl_brand(brandName) VALUES ('$brandName')";
             $result = $this->db->insert($query);
 
             if ($result != false) {
-                $alert = "<span class ='succsess'> Insert Category Successfully</span>";
+                $alert = "<span class ='succsess'> Insert Brand Successfully</span>";
                 return $alert;
             } else {
-                $alert = "<span class ='succsess'> Insert Category NOT Success</span>";
+                $alert = "<span class ='succsess'> Insert Brand NOT Success</span>";
                 return $alert;
             }
         }
@@ -69,7 +69,7 @@ class category
                 $alert = "<span class ='succsess'> Update Category Successfully</span>";
                 return $alert;
             } else {
-                $alert = "<span class ='error'>Category UPDATE NOT Success</span>";
+                $alert = "<span class ='succsess'>Category UPDATE NOT Success</span>";
                 return $alert;
             }
         }
@@ -82,7 +82,7 @@ class category
             $alert = "<span class ='succsess'> Delete Category Successfully</span>";
             return $alert;
         } else {
-            $alert = "<span class ='error'>Category DELETE NOT Success</span>";
+            $alert = "<span class ='succsess'>Category DELETE NOT Success</span>";
             return $alert;
         }
     }
