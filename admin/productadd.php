@@ -1,10 +1,19 @@
 ﻿<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
+<?php include '../classes/product.php';?>
+
+<?php $pd = new product();
+	if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+		
+		$insertProduct = $pd->insert_product($_POST,$_FILES);
+   }
+?>
+
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Add New Product</h2>
         <div class="block">               
-         <form action="" method="post" enctype="multipart/form-data">
+         <form action="productadd.php" method="post" enctype="multipart/form-data">
             <table class="form">
                
                 <tr>
