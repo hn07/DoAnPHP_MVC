@@ -51,8 +51,8 @@ header("Cache-Control: max-age=2592000");
                     <img src="img/livelogo.png" alt="Logo" />
                 </div>
                 <div class="floatleft middle">
-                    <h1>Training with live project</h1>
-                    <p>www.trainingwithliveproject.com</p>
+                    <h1>TP shop</h1>
+                    <p>Kênh mua bán thiết bị điện tử uy tính</p>
                 </div>
                 <div class="floatright">
                     <div class="floatleft">
@@ -67,7 +67,7 @@ header("Cache-Control: max-age=2592000");
                             }
 
                             ?>
-                            <li><a href="?action=logout">Logout</a></li>
+                            <li><a href="?action=logout">Đăng xuất</a></li>
                         </ul>
                     </div>
                 </div>
@@ -79,10 +79,10 @@ header("Cache-Control: max-age=2592000");
         </div>
         <div class="grid_12">
             <ul class="nav main">
-                <li class="ic-dashboard"><a href="index.php"><span>Dashboard</span></a> </li>
-                <li class="ic-form-style"><a href=""><span>User Profile</span></a></li>
-                <li class="ic-typography"><a href="changepassword.php"><span>Change Password</span></a></li>
-                <li class="ic-grid-tables"><a href="inbox.php"><span>Inbox</span></a></li>
+                <li class="ic-dashboard"><a href="index.php"><span>Quản trị</span></a> </li>
+                <li class="ic-form-style"><a href=""><span>Hồ sơ khách hàng</span></a></li>
+                <li class="ic-typography"><a href="changepassword.php"><span>Thay đổi mât khẩu</span></a></li>
+                <li class="ic-grid-tables"><a href="inbox.php"><span>Chat</span></a></li>
                 <li class="ic-charts"><a href=""><span>Visit Website</span></a></li>
             </ul>
         </div>
