@@ -3,8 +3,8 @@
 <?php include '../classes/brand.php'; ?>
 < <?php 
 $brand = new brand();
-if (isset($_GET['delid'])) {
-	$id = $_GET['delid'];
+if (isset($_GET['brandid'])) {
+	$id = $_GET['brandid'];
 	$delBrand = $brand->del_brand($id);
 }
 ?> 
@@ -36,7 +36,7 @@ if (isset($_GET['delid'])) {
 
 					?>
 							<tr class="odd gradeX">
-								<td><?php echo $i; ?></td>
+								<td><?php echo $id; ?></td>
 								<td><?php echo $result['brandName']; ?></td>
 								<td><a href="branddit.php?brandid=<?php echo $result['brandId'] ?>">Edit</a> ||
 								 <a onclick="return confirm('Are you want to delete?')" href="?brandid=<?php echo $result['brandId'] ?>">Delete
