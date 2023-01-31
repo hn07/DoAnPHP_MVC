@@ -26,8 +26,8 @@
 	<div class="wrap">
 		<div class="header_top">
 			<div class="logo">
-				<a href="index.php"><img src="images/logo.png" alt="" /></a>
-			</div>
+				<a href="index.php"><img src="images/livelogo.png" alt="" /></a>
+			</div>	
 			<div class="header_top_right">
 				<div class="search_box">
 					<form>
