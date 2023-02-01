@@ -1,7 +1,7 @@
 <!-- dam nhiem san pham -->
 <?php
-include '../lib/database.php';
-include '../helpers/format.php';
+include_once '../lib/database.php';
+include_once '../helpers/format.php';
 ?>
 
 
@@ -18,26 +18,39 @@ class product
     }
     public function insert_product($data, $files)
     {
-        $product_name = mysqli_real_escape_string($this->db->link, $data['product_name']);
-        $product_name = mysqli_real_escape_string($this->db->link, $data['product_name']);
-        $product_name = mysqli_real_escape_string($this->db->link, $data['product_name']);
-        $product_name = mysqli_real_escape_string($this->db->link, $data['product_name']);
-        $product_name = mysqli_real_escape_string($this->db->link, $data['product_name']);
-        $product_name = mysqli_real_escape_string($this->db->link, $data['product_name']);
-        $product_name = mysqli_real_escape_string($this->db->link, $data['product_name']);
+        $proName = mysqli_real_escape_string($this->db->link, $data['productName']);
+        $proBrand = mysqli_real_escape_string($this->db->link, $data['brand']);
+        $prodCategory = mysqli_real_escape_string($this->db->link, $data['category']);
+        $proDesc = mysqli_real_escape_string($this->db->link, $data['description']);
+        $proPrice = mysqli_real_escape_string($this->db->link, $data['price']);
+        $proType = mysqli_real_escape_string($this->db->link, $data['type']);
 
-        if (empty($catName)) {
-            $alert = "Category must be not empty";
+        // kiem tra va lay hinh anh cho vao folder upload
+        $permited = array('jpg','png','jpeg','gif');
+        $file_name = $_FILES['image']['name'];
+        $file_size = $_FILES['image']['size'];
+        $file_temp = $_FILES['image']['tmp_name'];
+
+        $div = explode('.', $file_name);
+        $file_ext = strtolower(end($div));
+        $unique_image = substr(md5(time()), 0, 10).'.'. $file_ext;
+        $uploadde_image = 'uploads/'.$unique_image;
+
+        if ($proName == "" ||$proBrand == "" ||$prodCategory == "" ||$proDesc == "" ||$proPrice == "" ||$proType == ""|| $file_name == "") {
+            $alert = "Các trường không được rỗng";
             return $alert;
         } else {
-            $query = "INSERT INTO tbl_category(catName) VALUES ('$catName')";
+            // có hình anh sẽ đưa vào folder uploads
+            move_uploaded_file($file_temp, $uploadde_image);
+            $query = "INSERT INTO tbl_product(productName,catid,brandid,description,type,price, image) 
+            VALUES ('$proName','$prodCategory','$proBrand','$proDesc','$proType','$proPrice','$unique_image')";
             $result = $this->db->insert($query);
 
             if ($result != false) {
-                $alert = "<span class ='succsess'> Insert Category Successfully</span>";
+                $alert = "<span class ='succsess'> Insert Product Successfully</span>";
                 return $alert;
             } else {
-                $alert = "<span class ='succsess'> Insert Category NOT Success</span>";
+                $alert = "<span class ='error'> Insert Product NOT Success</span>";
                 return $alert;
             }
         }
