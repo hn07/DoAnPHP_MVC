@@ -32,7 +32,7 @@ include_once '../classes/product.php';
                             <label>Tên Sản phẩm</label>
                         </td>
                         <td>
-                            <input type="text" name="productName" placeholder="Enter Product Name..." class="medium" />
+                            <input type="text" name="productName" placeholder="Tên sản phẩm..." class="medium" />
                         </td>
                     </tr>
                     <tr>

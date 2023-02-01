@@ -55,13 +55,13 @@ class product
             }
         }
     }
-    // public function show_category()
-    // {
-    //     //chon tat car trong bang tbl_category va sap xep theo id
-    //     $query = "SELECT * FROM tbl_category order by catId desc";
-    //     $result = $this->db->select($query);
-    //     return $result;
-    // }
+    public function show_product()
+    {
+        //chon tat car trong bang tbl_product va sap xep theo id
+        $query = "SELECT * FROM tbl_product order by catId desc";
+        $result = $this->db->select($query);
+        return $result;
+    }
     // public function getCatByID($id)
     // {
     //     $query = "SELECT * FROM tbl_category WHERE catId = '$id'";
