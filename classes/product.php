@@ -57,51 +57,111 @@ class product
     }
     public function show_product()
     {
-        //chon tat car trong bang tbl_product va sap xep theo id
-        $query = "SELECT * FROM tbl_product order by catId desc";
+        // $query = "SELECT p.*, b.brandName, c.catName 
+        // from  tbl_product as p, tbl_category as c, tbl_brand as b where p.catId = c.catId and
+        // p.brandid = b.brandid
+        // order by p.productId desc";
+
+        $query = "SELECT tbl_product.*, tbl_category.catName, tbl_brand.brandName
+
+        FROM tbl_product INNER JOIN tbl_category ON  tbl_product.catId = tbl_category.catId 
+
+        INNER JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId 
+
+        ORDER BY tbl_product.productId desc";
+        
         $result = $this->db->select($query);
         return $result;
     }
-    // public function getCatByID($id)
-    // {
-    //     $query = "SELECT * FROM tbl_category WHERE catId = '$id'";
-    //     $result = $this->db->select($query);
-    //     return $result;
-    // }
+    public function getProductByID($id)
+    {
+        $query = "SELECT * FROM tbl_product WHERE productId = '$id'";
+        $result = $this->db->select($query);
+        return $result;
+    }
 
-    // public function update_category($catName, $id)
-    // {
-    //     $catName = $this->fm->validation($catName);
-    //     $catName = mysqli_real_escape_string($this->db->link, $catName);
-    //     $id = mysqli_real_escape_string($this->db->link, $id);
+    public function update_product($data,$files, $id)
+    {
+        $proName = mysqli_real_escape_string($this->db->link, $data['productName']);
+        $proBrand = mysqli_real_escape_string($this->db->link, $data['brand']);
+        $prodCategory = mysqli_real_escape_string($this->db->link, $data['category']);
+        $proDesc = mysqli_real_escape_string($this->db->link, $data['description']);
+        $proPrice = mysqli_real_escape_string($this->db->link, $data['price']);
+        $proType = mysqli_real_escape_string($this->db->link, $data['type']);
 
-    //     if (empty($catName)) {
-    //         $alert = "Category must be not empty";
-    //         return $alert;
-    //     } else {
-    //         $query = "UPDATE tbl_category SET catName = '$catName' WHERE catId = '$id'";
-    //         $result = $this->db->update($query);
+        // kiem tra va lay hinh anh cho vao folder upload
+        $permited = array('jpg','png','jpeg','gif');
+        $file_name = $_FILES['image']['name'];
+        $file_size = $_FILES['image']['size'];
+        $file_temp = $_FILES['image']['tmp_name'];
 
-    //         if ($result != false) {
-    //             $alert = "<span class ='succsess'> Update Category Successfully</span>";
-    //             return $alert;
-    //         } else {
-    //             $alert = "<span class ='error'>Category UPDATE NOT Success</span>";
-    //             return $alert;
-    //         }
-    //     }
-    // }
+        $div = explode('.', $file_name);
+        $file_ext = strtolower(end($div));
+        $unique_image = substr(md5(time()), 0, 10).'.'. $file_ext;
+        $uploadde_image = 'uploads/'.$unique_image;
 
-    // public function del_category($id){
-    //     $query = "DELETE FROM tbl_category WHERE catId = '$id'";
-    //     $result = $this->db->delete($query);
-    //     if($result){
-    //         $alert = "<span class ='succsess'> Delete Category Successfully</span>";
-    //         return $alert;
-    //     } else {
-    //         $alert = "<span class ='error'>Category DELETE NOT Success</span>";
-    //         return $alert;
-    //     }
-    // }
+        if ($proName == "" ||$proBrand == "" ||$prodCategory == "" ||$proDesc == "" ||$proPrice == "" ||$proType == "") {
+            $alert = "Các trường không được rỗng";
+            return $alert;
+        }else{
+            if(!empty($file_name)){
+                // neu nguoi dung chon anh
+                if($file_size > 10.240){
+                    $alert = "<span class ='succsess'>Tập tin hình ảnh nên có kích thước dưới 2MB </span>";
+                    return $alert;
+                }elseif(in_array($file_ext,$permited) === false){
+                    $alert = "<span class ='succsess'>Chỉ được up load các file có phần mở rộng là: ".implode(', ',$permited)."</span>";
+                    return $alert;
+                }
+            $query = "UPDATE tbl_product SET
+            productName = '$proName', 
+            catid = '$prodCategory',
+            brandid = '$proBrand', 
+            description = '$proDesc', 
+            type = '$proType', 
+            price = '$proPrice', 
+            image = '$unique_image'
+
+            WHERE productId = '$id'";
+            }
+            else{
+                // neu nguoi dung kh chon anh
+
+            $query = "UPDATE tbl_product SET
+            productName = '$proName', 
+            catid = '$prodCategory',
+            brandid = '$proBrand', 
+            description = '$proDesc', 
+            type = '$proType', 
+            price = '$proPrice'
+
+            WHERE productId = '$id'";
+            }
+
+        }
+        
+            $result = $this->db->update($query);
+
+            if ($result != false) {
+                $alert = "<span class ='succsess'> Update   Successfully</span>";
+                return $alert;
+            } else {
+                $alert = "<span class ='error'>Update NOT Success</span>";
+                return $alert;
+            }
+        
+    }
+
+    public function del_product($id){
+        $query = "DELETE FROM tbl_product WHERE productId = '$id'";
+        $result = $this->db->delete($query);
+        if($result){
+            $alert = "<span class ='succsess'> Delete Product Successfully</span>";
+            return $alert;
+        } else {
+            $alert = "<span class ='error'>Product DELETE NOT Success</span>";
+            return $alert;
+        }
+    }
 }
 ?>

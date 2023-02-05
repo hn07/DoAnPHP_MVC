@@ -20,7 +20,6 @@ include_once '../helpers/format.php';
 						<th>Hình ảnh</th>
 						<th>Danh mục</th>
 						<th>Thương hiệu</th>
-						<th>Mô tả</th>
 						<th>Loại</th>
 						<th>Tùy chỉnh</th>
 					</tr>
@@ -39,10 +38,9 @@ include_once '../helpers/format.php';
 								<td><?php echo $id ?></td>
 								<td><?php echo $result['productName'] ?></td>
 								<td><?php echo $result['price'] ?></td>
-								<td><img src="uploads/<?php echo $result['image'] ?>" width = '50'></td>
-								<td><?php echo $result['catid'] ?></td>
-								<td><?php echo $result['brandid'] ?></td>
-								<td><?php echo $fm->textShorten($result['description'],100) ?></td>
+								<td><img src="uploads/<?php echo $result['image'] ?>" width = '80' ></td>
+								<td><?php echo $result['catName'] ?></td>
+								<td><?php echo $result['brandName'] ?></td>
 								<td class="center">
 								<?php 
 								if($result['type'] == 0){
@@ -53,7 +51,7 @@ include_once '../helpers/format.php';
 								}
 								?>
 								</td>
-								<td><a href="">Sửa</a> || <a href="">Xóa</a></td>
+								<td><a href="productedit.php?productid=<?php echo $result['productId'] ?>">Sửa</a> || <a href="?productid=<?php echo $result['productId'] ?>">Xóa</a></td>
 							</tr>
 					<?php
 						}
