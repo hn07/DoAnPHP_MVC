@@ -30,9 +30,9 @@ if (isset($_GET['brandid'])) {
 					<?php
 					$showBrand = $brand->show_brand();
 					if ($showBrand) {
-						$i = 0;
+						$id = 0;
 						while ($result = $showBrand->fetch_assoc()) {
-							$i++;
+							$id++;
 
 					?>
 							<tr class="odd gradeX">
