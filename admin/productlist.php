@@ -6,7 +6,13 @@ include_once '../classes/brand.php';
 include_once '../classes/product.php';
 include_once '../helpers/format.php';
 ?>
-
+< <?php 
+$pd = new product();
+if (isset($_GET['productid'])) {
+	$id = $_GET['productid'];
+	$delproduct = $pd->del_product($id);
+}
+?> 
 <div class="grid_10">
 	<div class="box round first grid">
 		<h2>Danh sách bài đăng</h2>

@@ -1,7 +1,9 @@
 <!-- dam nhiem san pham -->
 <?php
-include_once '../lib/database.php';
-include_once '../helpers/format.php';
+$filepath = realpath(dirname(__FILE__));
+include_once $filepath.('/../lib/database.php');
+include_once $filepath.('/../helpers/format.php');
+
 ?>
 
 
@@ -57,11 +59,6 @@ class product
     }
     public function show_product()
     {
-        // $query = "SELECT p.*, b.brandName, c.catName 
-        // from  tbl_product as p, tbl_category as c, tbl_brand as b where p.catId = c.catId and
-        // p.brandid = b.brandid
-        // order by p.productId desc";
-
         $query = "SELECT tbl_product.*, tbl_category.catName, tbl_brand.brandName
 
         FROM tbl_product INNER JOIN tbl_category ON  tbl_product.catId = tbl_category.catId 
@@ -163,5 +160,31 @@ class product
             return $alert;
         }
     }
+
+    // ================================================================= Fontend =================================================================
+
+    public function getproducts_feathered()
+    {
+        $query = "SELECT * FROM tbl_product WHERE type = 1";
+        $result = $this->db->select($query);
+        return $result;
+    } public function getproducts_new()
+    {
+        $query = "SELECT * FROM tbl_product WHERE type = 0";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function getproducts_detail($id){
+        $query = "SELECT tbl_product.*, tbl_category.catName, tbl_brand.brandName
+
+        FROM tbl_product INNER JOIN tbl_category ON  tbl_product.catId = tbl_category.catId 
+
+        INNER JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId 
+        WHERE tbl_product.productId = '$id' ";
+        
+        $result = $this->db->select($query);
+        return $result;
+    }
+    
 }
 ?>

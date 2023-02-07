@@ -138,13 +138,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                                         <?php
                                         if ($result_product['type'] == 1) {
                                         ?>
-                                            <option selected value="1">Nỗi bật</option>
-                                            <option value="0">Không nỗi bật</option>
+                                            <option selected value="1">Sản phẩm nỗi bật</option>
+                                            <option value="0">Sản phẩm mới</option>
                                         <?php
                                         } else {
                                         ?>
-                                            <option value="1">Nỗi bật</option>
-                                            <option selected value="0">Không nỗi bật</option>
+                                            <option value="1">Sản phẩm nỗi bật</option>
+                                            <option selected value="0">Sản phẩm mới</option>
                                         <?php
                                         }
                                         ?>

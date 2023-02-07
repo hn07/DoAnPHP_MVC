@@ -1,3 +1,39 @@
+<?php
+include 'lib/session.php';
+Session::init();
+ //check nếu đã đăng nhập thành công ->được vào trang index
+?>
+<?php
+include_once 'lib/database.php';
+include_once 'helpers/format.php';
+
+spl_autoload_register(function($class){
+	include_once "classes/".$class.".php";
+});
+
+$db = new Database();
+$fm = new Format();
+$us = new User();
+$ct = new cart();
+$cat = new category();
+$product = new product();
+$brand = new brand();
+?>
+<?php
+header("Cache-Control: no-cache, must-revalidate");
+header("Pragma: no-cache");
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+header("Cache-Control: max-age=2592000");
+?>
+
+
+<?php
+header("Cache-Control: no-cache, must-revalidate");
+header("Pragma: no-cache");
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+header("Cache-Control: max-age=2592000");
+?>
+
 <!DOCTYPE php>
 
 <head>

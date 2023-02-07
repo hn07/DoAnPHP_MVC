@@ -41,7 +41,7 @@ include_once '../classes/product.php';
                         </td>
                         <td>
                             <select id="select" name="category">
-                                <option>Select Category</option>
+                                <option>Chọn danh mục</option>
                                 <?php
                                 $cat = new category();
                                 $catlist = $cat->show_category();
@@ -65,7 +65,7 @@ include_once '../classes/product.php';
                         </td>
                         <td>
                             <select id="select" name="brand">
-                                <option>Select Brand</option>
+                                <option>Chọn Thương hiệu</option>
                                 <?php
                                 $brand = new brand();
                                 $brandlist = $brand->show_brand();
@@ -97,7 +97,7 @@ include_once '../classes/product.php';
                             <label>Giá</label>
                         </td>
                         <td>
-                            <input type="text" name="price" placeholder="Enter Price..." class="medium" />
+                            <input type="text" name="price" placeholder="Giá sản phẩm..." class="medium" />
                         </td>
                     </tr>
 
@@ -117,8 +117,8 @@ include_once '../classes/product.php';
                         <td>
                             <select id="select" name="type">
                                 <option>Select Type</option>
-                                <option value="1">Nỗi bật</option>
-                                <option value="0">Không nỗi bật</option>
+                                <option value="1">Sản phẩm nỗi bật</option>
+                                <option value="0">Sản phẩm mới</option>
                             </select>
                         </td>
                     </tr>
