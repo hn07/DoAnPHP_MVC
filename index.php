@@ -5,9 +5,7 @@ include 'inc/slider.php';
 
 
 <div class="main">
-	<?php
-	echo session_id();
-	?>
+	
 	<div class="content">
 		<div class="content_top">
 			<div class="heading">
