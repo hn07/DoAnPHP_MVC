@@ -5,6 +5,9 @@ include 'inc/slider.php';
 
 
 <div class="main">
+	<?php
+	echo session_id();
+	?>
 	<div class="content">
 		<div class="content_top">
 			<div class="heading">
@@ -23,7 +26,7 @@ include 'inc/slider.php';
 						<h2><?php echo $result['productName'] ?></h2>
 						<p><?php echo $fm->textShorten($result['description'],50) ?></p>
 						<p><span class="price"><?php echo $result['price']." VNĐ" ?></span></p>
-						<div class="button"><span><a href="details.php?	=<?php echo $result['productId'] ?>" class="details">Details</a></span></div>
+						<div class="button"><span><a href="details.php?productid=<?php echo $result['productId'] ?>" class="details">Details</a></span></div>
 					</div>
 					
 			<?php
