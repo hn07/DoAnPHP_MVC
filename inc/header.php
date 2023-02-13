@@ -1,14 +1,14 @@
 <?php
 include 'lib/session.php';
 Session::init();
- //check nếu đã đăng nhập thành công ->được vào trang index
+//check nếu đã đăng nhập thành công ->được vào trang index
 ?>
 <?php
 include_once 'lib/database.php';
 include_once 'helpers/format.php';
 
-spl_autoload_register(function($class){
-	include_once "classes/".$class.".php";
+spl_autoload_register(function ($class) {
+	include_once "classes/" . $class . ".php";
 });
 
 $db = new Database();
@@ -52,8 +52,12 @@ header("Cache-Control: max-age=2592000");
 	<link href='http://fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
 	<script type="text/javascript">
-		$(document).ready(function ($) {
-			$('#dc_mega-menu-orange').dcMegaMenu({ rowItems: '4', speed: 'fast', effect: 'fade' });
+		$(document).ready(function($) {
+			$('#dc_mega-menu-orange').dcMegaMenu({
+				rowItems: '4',
+				speed: 'fast',
+				effect: 'fade'
+			});
 		});
 	</script>
 </head>
@@ -63,20 +67,28 @@ header("Cache-Control: max-age=2592000");
 		<div class="header_top">
 			<div class="logo">
 				<a href="index.php"><img src="images/livelogo.png" alt="" /></a>
-			</div>	
+			</div>
 			<div class="header_top_right">
 				<div class="search_box">
 					<form>
-						<input type="text" value="Search for Products" onfocus="this.value = '';"
-							onblur="if (this.value == '') {this.value = 'Search for Products';}"><input type="submit"
-							value="SEARCH">
+						<input type="text" value="Search for Products" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search for Products';}"><input type="submit" value="SEARCH">
 					</form>
 				</div>
 				<div class="shopping_cart">
 					<div class="cart">
 						<a href="#" title="View my shopping cart" rel="nofollow">
 							<span class="cart_title">Cart</span>
-							<span class="no_product">(empty)</span>
+							<span class="no_product">
+								<?php
+								$check_cart = $ct->check_cart();
+								if ($check_cart) {
+									$sum = Session::get("sum");
+									echo $fm->product_price($sum);
+								} else {
+									echo "empty";
+								}
+								?>
+							</span>
 						</a>
 					</div>
 				</div>

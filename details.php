@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 			?>
 					<div class="cont-desc span_1_of_2">
 						<div class="grid images_3_of_2">
-							<img src="admin/uploads/<?php echo $result_details['image'] ?>" alt="" style="" />
+							<img src="admin/uploads/<?php echo $result_details['image'] ?>" alt="" style="object-fit: scale-down;" />
 						</div>
 						<div class="desc span_3_of_2">
 							<h2><?php echo $result_details['productName'] ?></h2>

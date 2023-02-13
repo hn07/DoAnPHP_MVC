@@ -4,7 +4,7 @@ include 'inc/slider.php';
 ?>
 
 
-<div class="main">
+<div class="main" >
 	
 	<div class="content">
 		<div class="content_top">
@@ -20,7 +20,7 @@ include 'inc/slider.php';
 				while ($result = $Product_feathered->fetch_assoc()) {
 			?>
 					<div class="grid_1_of_4 images_1_of_4">
-						<a href="details.php"><img src="admin/uploads/<?php echo $result['image'] ?>" alt="" /></a>
+						<a href="details.php?productid=<?php echo $result['productId'] ?>"><img src="admin/uploads/<?php echo $result['image'] ?>" alt="" /></a>
 						<h2><?php echo $result['productName'] ?></h2>
 						<p><?php echo $fm->textShorten($result['description'],50) ?></p>
 						<p><span class="price"><?php echo $result['price']." VNĐ" ?></span></p>
@@ -45,7 +45,7 @@ include 'inc/slider.php';
 				while ($result_new = $Product_new->fetch_assoc()) {
 			?>
 					<div class="grid_1_of_4 images_1_of_4">
-						<a href="details.php"><img src="admin/uploads/<?php echo $result_new['image'] ?>" alt="" /></a>
+						<a href="details.php?productid=<?php echo $result_new['productId'] ?>"><img src="admin/uploads/<?php echo $result_new['image'] ?>" alt="" /></a>
 						<h2><?php echo $result_new['productName'] ?></h2>
 						<p><?php echo $fm->textShorten($result_new['description'],50) ?></p>
 						<p><span class="price"><?php echo $result_new['price']." VNĐ" ?></span></p>
