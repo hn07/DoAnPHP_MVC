@@ -15,6 +15,7 @@ $db = new Database();
 $fm = new Format();
 $us = new User();
 $ct = new cart();
+$cs = new customer();
 $cat = new category();
 $product = new product();
 $brand = new brand();
@@ -51,6 +52,9 @@ header("Cache-Control: max-age=2592000");
 	<script type="text/javascript" src="js/nav-hover.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="SHORTCUT ICON" href="images/logo.jpg">
+	
 	<script type="text/javascript">
 		$(document).ready(function($) {
 			$('#dc_mega-menu-orange').dcMegaMenu({
@@ -66,7 +70,7 @@ header("Cache-Control: max-age=2592000");
 	<div class="wrap">
 		<div class="header_top">
 			<div class="logo">
-				<a href="index.php"><img src="images/livelogo.png" alt="" /></a>
+				<a href="index.php"><img src="images/logo.jpg" style="width: 150px;height: 100px;" alt="" /></a>
 			</div>
 			<div class="header_top_right">
 				<div class="search_box">
@@ -92,7 +96,23 @@ header("Cache-Control: max-age=2592000");
 						</a>
 					</div>
 				</div>
-				<div class="login"><a href="login.php">Login</a></div>
+				<?php 
+				if(isset($_GET['customerid'])){
+					$del_cart = $ct->del_all_data_cart();
+					Session::destroy();
+				}
+				?>
+				<div class="login">
+					<?php
+					$login_check = Session::get('login_customer');
+					if ($login_check == false) {
+						echo '<a href ="login.php">Đăng nhập</a>';
+					} else {
+						echo '<a href="?customerid='.Session::get('id_customer').'">Đăng xuất</a>';						
+					}
+					?>
+					
+				</div>
 				<div class="clear"></div>
 			</div>
 			<div class="clear"></div>
@@ -103,6 +123,15 @@ header("Cache-Control: max-age=2592000");
 				<li><a href="products.php">Products</a> </li>
 				<li><a href="topbrands.php">Top Brands</a></li>
 				<li><a href="cart.php">Cart</a></li>
+				<?php
+					$login_check = Session::get('login_customer');
+					if ($login_check == false) {
+						echo '';
+					} else {
+						echo '<li><a href="profile.php">Profile</a></li>';						
+					}
+					?>
+				
 				<li><a href="contact.php">Contact</a> </li>
 				<div class="clear"></div>
 			</ul>
