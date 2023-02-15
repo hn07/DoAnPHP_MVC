@@ -86,10 +86,16 @@ class cart
         }
     }
    
-       public function check_cart()
+    public function check_cart()
     {
         $sid = session_id();
         $query = "SELECT * FROM tbl_cart WHERE sId = '$sid'";
+        $result = $this->db->select($query);
+        return $result;
+    } 
+    public function del_all_data_cart(){
+        $sid = session_id();
+        $query = "DELETE FROM tbl_cart WHERE sId = '$sid'";
         $result = $this->db->select($query);
         return $result;
     }
