@@ -2,7 +2,12 @@
 include 'inc/header.php';
 include 'inc/slider.php';
 ?>
-
+<?php
+$login_check = Session::get('login_customer');
+if ($login_check == false) {
+	header('Location:login.php');
+} 
+?>
 
 <div class="main" >
 	
