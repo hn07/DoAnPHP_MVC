@@ -44,7 +44,7 @@ body{
 }
 /**** Header Top Right ****/
 .header_top_right{
-	float:left;
+	float:right;
 	width:67%;
 	margin-top:35px;
 }
@@ -2480,4 +2480,13 @@ p.terms {
 	color: #270;
 	background-color: #DFF2BF;
 	font-size: 18px;
+}
+.error_span{
+	color: red;
+	background-color: #DFF2BF;
+	font-size: 18px;
+}
+.grey{
+	font-size: 20px;
+    background: #ced8e0;
 }
