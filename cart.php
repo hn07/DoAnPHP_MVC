@@ -12,9 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 	}
 }
 ?>
-<?php 
-if(!isset($_GET['id'])) {
-echo "<meta http-equiv='refresh' content='0;url=?id=live'>";
+<?php
+if (!isset($_GET['id'])) {
+	echo "<meta http-equiv='refresh' content='0;url=?id=live'>";
 }
 ?>
 <?php
@@ -81,12 +81,12 @@ if (isset($_GET['cartId'])) {
 							$sub_total += $total_price;
 						}
 					}
-					
+
 					?>
 				</table>
 				<?php
 				$check_cart = $ct->check_cart();
-				if ($check_cart) {					
+				if ($check_cart) {
 					$vat = $sub_total * 0.1;
 					$Grand_Total = $sub_total + $vat;
 				?>
@@ -110,21 +110,26 @@ if (isset($_GET['cartId'])) {
 								?></td>
 						</tr>
 					</table>
+					<div class="shopping">
+						<div class="shopleft">
+							<a href="index.php"> <img src="images/shop.png" alt="" /></a>
+						</div>
+						<div class="shopright">
+							<a href="login.php"> <img src="images/check.png" alt="" /></a>
+						</div>
+					</div>
 				<?php
-				}
-				else{
-					echo "Giỏ hàng tróng";
+				} else {
+					echo "<h2 style='width: 100%; font-size: 25px;'>Không có sản phẩm nào trong giỏ hàng</h2>";				
+				?>
+				<div class="shop" style="display: flex; justify-content: center;">
+					<a href="index.php"> <img src="images/shop.png" alt="" /></a>
+				</div>
+				<?php 
 				}
 				?>
 			</div>
-			<div class="shopping">
-				<div class="shopleft">
-					<a href="index.php"> <img src="images/shop.png" alt="" /></a>
-				</div>
-				<div class="shopright">
-					<a href="login.php"> <img src="images/check.png" alt="" /></a>
-				</div>
-			</div>
+
 		</div>
 		<div class="clear"></div>
 	</div>
