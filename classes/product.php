@@ -154,7 +154,7 @@ class product
     }
     public function getproducts_new()
     {
-        $query = "SELECT * FROM tbl_product WHERE type = 0";
+        $query = "SELECT * FROM tbl_product order by productId desc limit 4";
         $result = $this->db->select($query);
         return $result;
     }
@@ -166,6 +166,18 @@ class product
 
         INNER JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId 
         WHERE tbl_product.productId = '$id' ";
+
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function getproducts_all()
+    {
+        $query = "SELECT tbl_product.*, tbl_category.catName, tbl_brand.brandName
+
+        FROM tbl_product INNER JOIN tbl_category ON  tbl_product.catId = tbl_category.catId 
+
+        INNER JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId 
+        order by productId desc ";
 
         $result = $this->db->select($query);
         return $result;
