@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 				while ($result_details = $get_product_detail->fetch_assoc()) {
 
 			?>
-					<div class="cont-desc span_1_of_2">
+					<div class="cont-desc">
 						<div class="grid images_3_of_2">
 							<img src="admin/uploads/<?php echo $result_details['image'] ?>" alt="" style="object-fit: scale-down;" />
 						</div>
