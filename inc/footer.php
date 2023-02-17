@@ -57,15 +57,6 @@
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function () {
-			/*
-			var defaults = {
-					containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear' 
-				};
-			*/
-
 			$().UItoTop({ easingType: 'easeOutQuart' });
 
 		});
@@ -74,9 +65,9 @@
 	<link href="css/flexslider.css" rel='stylesheet' type='text/css' />
 	<script defer src="js/jquery.flexslider.js"></script>
 	<script type="text/javascript">
-		$(function () {
-			SyntaxHighlighter.all();
-		});
+		// $(function () {
+		// 	SyntaxHighlighter.all();
+		// });
 		$(window).load(function () {
 			$('.flexslider').flexslider({
 				animation: "slide",
