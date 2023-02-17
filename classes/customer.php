@@ -75,5 +75,39 @@ class customer
             }
         }
     }
+    public function showCustomerProfile($id){
+        $check_customer = "SELECT * FROM tbl_customer WHERE id = '$id' ";
+        $result = $this->db->select($check_customer);
+        return $result;
+    }
+    public function update_customer($data,$id){
+        
+        $name = mysqli_real_escape_string($this->db->link, $data['name']);
+        $city = mysqli_real_escape_string($this->db->link, $data['city']);
+        $zipcode = mysqli_real_escape_string($this->db->link, $data['zipcode']);
+        $email = mysqli_real_escape_string($this->db->link, $data['email']);
+        $address = mysqli_real_escape_string($this->db->link, $data['address']);
+        $country = mysqli_real_escape_string($this->db->link, $data['country']);
+        $phone = mysqli_real_escape_string($this->db->link, $data['phone']);
+        
+        $id = mysqli_real_escape_string($this->db->link, $id);       
+
+        if ($name == "" || $city == "" || $zipcode == "" || $email == "" || $address == "" || $country == "" || $phone == "") {
+            $alert = "<span class ='error_span'>Các trường không được trống!</span>";
+            return $alert;
+        }else{
+            $query = "UPDATE tbl_customer SET name = '$name' AND address = '$address'AND country = '$country' AND city = '$city' AND  zipcode = '$zipcode' AND phone = '$phone' AND email = '$email'  WHERE id = '$id'";
+            $result = $this->db->update($query);
+
+            if ($result != false) {
+                $alert = "<span class ='succsess'> Update Successfully</span>";
+                return $alert;
+            } else {
+                $alert = "<span class ='error'>UPDATE NOT Success</span>";
+                return $alert;
+            }
+            
+        }
+    }
 }
 ?>

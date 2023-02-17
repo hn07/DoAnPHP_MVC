@@ -41,8 +41,7 @@ header("Cache-Control: max-age=2592000");
 	<title>Store Website</title>
 	<meta http-equiv="Content-Type" content="text/php; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="css/menu.css" rel="stylesheet" type="text/css" media="all" />
+
 	<script src="js/jquerymain.js"></script>
 	<script src="js/script.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
@@ -52,9 +51,18 @@ header("Cache-Control: max-age=2592000");
 	<script type="text/javascript" src="js/nav-hover.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="/css/style.css">
-	<link rel="SHORTCUT ICON" href="images/logo.jpg">
-	
+	<link rel="SHORTCUT ICON" href="images/logo.png">
+
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/menu.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- Font Awesome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+	<!-- MDB -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css" rel="stylesheet" /><!-- MDB -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"></script>
+
 	<script type="text/javascript">
 		$(document).ready(function($) {
 			$('#dc_mega-menu-orange').dcMegaMenu({
@@ -68,16 +76,20 @@ header("Cache-Control: max-age=2592000");
 
 <body>
 	<div class="wrap">
-		<div class="header_top">
+		<div class="header">
 			<div class="logo">
-				<a href="index.php"><img src="images/logo.jpg" style="width: 150px;height: 100px;" alt="" /></a>
+				<a href="index.php"><img src="images/logo.png" style="width: 150px;height: 100px;" alt="" /></a>
 			</div>
 			<div class="header_top_right">
 				<div class="search_box">
-					<form>
-						<input type="text" value="Search for Products" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search for Products';}"><input type="submit" value="SEARCH">
+					<form class="d-flex input-group w-auto">
+						<input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+						<span class="input-group-text border-0" id="search-addon">
+							<i class="fas fa-search"></i>
+						</span>
 					</form>
 				</div>
+
 				<div class="shopping_cart">
 					<div class="cart">
 						<a href="#" title="View my shopping cart" rel="nofollow">
@@ -96,22 +108,23 @@ header("Cache-Control: max-age=2592000");
 						</a>
 					</div>
 				</div>
-				<?php 
-				if(isset($_GET['customerid'])){
+
+				<?php
+				if (isset($_GET['customerid'])) {
 					$del_cart = $ct->del_all_data_cart();
 					Session::destroy();
 				}
 				?>
-				<div class="login">
+				<div class="btn bg-danger">
 					<?php
 					$login_check = Session::get('login_customer');
 					if ($login_check == false) {
 						echo '<a href ="login.php">Đăng nhập</a>';
 					} else {
-						echo '<a href="?customerid='.Session::get('id_customer').'">Đăng xuất</a>';						
+						echo '<a href="?customerid=' . Session::get('id_customer') . '">Đăng xuất</a>';
 					}
 					?>
-					
+
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -119,19 +132,20 @@ header("Cache-Control: max-age=2592000");
 		</div>
 		<div class="menu">
 			<ul id="dc_mega-menu-orange" class="dc_mm-orange">
+
 				<li><a href="index.php">Home</a></li>
 				<li><a href="products.php">Products</a> </li>
-				<li><a href="topbrands.php">Top Brands</a></li>
 				<li><a href="cart.php">Cart</a></li>
+
 				<?php
-					$login_check = Session::get('login_customer');
-					if ($login_check == false) {
-						echo '';
-					} else {
-						echo '<li><a href="profile.php">Profile</a></li>';						
-					}
-					?>
-				
+				$login_check = Session::get('login_customer');
+				if ($login_check == false) {
+					echo '';
+				} else {
+					echo '<li><a href="profile.php">Profile</a></li>';
+				}
+				?>
+
 				<li><a href="contact.php">Contact</a> </li>
 				<div class="clear"></div>
 			</ul>
