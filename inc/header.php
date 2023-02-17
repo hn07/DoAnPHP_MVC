@@ -38,7 +38,7 @@ header("Cache-Control: max-age=2592000");
 <!DOCTYPE php>
 
 <head>
-	<title>Store Website</title>
+	<title>Y Shop</title>
 	<meta http-equiv="Content-Type" content="text/php; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -49,6 +49,7 @@ header("Cache-Control: max-age=2592000");
 	<script type="text/javascript" src="js/move-top.js"></script>
 	<script type="text/javascript" src="js/easing.js"></script>
 	<script type="text/javascript" src="js/nav-hover.js"></script>
+
 	<link href='http://fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
 	<link rel="SHORTCUT ICON" href="images/logo.png">
@@ -115,7 +116,7 @@ header("Cache-Control: max-age=2592000");
 					Session::destroy();
 				}
 				?>
-				<div class="btn bg-danger">
+				<div class="btn bg-secondary  shadow-5" style="width: 150px; margin-left: 10px;" >
 					<?php
 					$login_check = Session::get('login_customer');
 					if ($login_check == false) {

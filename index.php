@@ -1,5 +1,3 @@
-<link href="css/style2.css" rel="stylesheet" type="text/css" media="all" />
-
 <?php
 include 'inc/header.php';
 include 'inc/slider.php';
