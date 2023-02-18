@@ -10,7 +10,7 @@ if (!isset($_GET['productid']) || $_GET['productid'] == NULL) {
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 	$quantity = $_POST['quantity'];
-	$Addcart = $ct->addToCart($quantity,$id);
+	$Addcart = $ct->addToCart($quantity, $id);
 }
 ?>
 <div class="main">
@@ -30,26 +30,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 							<h2><?php echo $result_details['productName'] ?></h2>
 							<p><?php echo $fm->textShorten($result_details['description']) ?></p>
 							<div class="price">
-								<p>Price: <span><?php echo $result_details['price'] . " VNĐ" ?></span></p>
-								<p>Category: <span><?php echo $result_details['catName'] ?></span></p>
-								<p>Brand:<span><?php echo $result_details['brandName'] ?></span></p>
+								<p>Giá: <span><?php echo $result_details['price'] . " VNĐ" ?></span></p>
+								<p>Danh mục: <span><?php echo $result_details['catName'] ?></span></p>
+								<p>Thương hiệu:<span><?php echo $result_details['brandName'] ?></span></p>
 							</div>
 							<div class="add-cart">
 								<form action="" method="post">
 									<input type="number" class="buyfield" name="quantity" value="1" min="1" />
 									<input type="submit" class="buysubmit" name="submit" value="Buy Now" />
 								</form>
-									<?php
-									if(isset($Addcart)){
-										echo "<hr>";
-										echo "<span style = 'color: blue'>Sản phẩm đã được thêm thành công</span>";
-									}
-									?>
+								<?php
+								if (isset($Addcart)) {
+									echo "<hr>";
+									echo "<span style = 'color: blue'>Sản phẩm đã được thêm thành công</span>";
+								}
+								?>
 							</div>
 						</div>
 						<div class="product-desc">
 							<h2>Product Details</h2>
-							<p><?php echo $result_details['description']?></p>
+							<p><?php echo $result_details['description'] ?></p>
 						</div>
 
 					</div>

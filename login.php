@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
 			<form action="" method="POST">
 				<input type="text" name="email" class="field" placeholder="Email..">
 				<input type="password" name="password" class="field" placeholder="Password..">
-				<p class="note">If you forgot your passoword just enter your email and click <a href="#">here</a></p>
+				<p class="note">Nếu bạn quên mật khẩu, chỉ cần nhập email của bạn và nhấp vào <a href="#">đây</a></p>
 				<div class="buttons">
 					<div><input type="submit" name="login" value="Đăng nhập" class="grey" style="text-align: center; font-size: 20px; background: #ced8e0; width: 160px;"></input></div>
 				</div>

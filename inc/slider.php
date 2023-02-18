@@ -1,6 +1,5 @@
 <div class="header_bottom">
 			<div >
-				<!-- FlexSlider -->
 				<section class="slider">
 					<div class="flexslider">
 						<ul class="slides">
@@ -11,7 +10,6 @@
 						</ul>
 					</div>
 				</section>
-				<!-- FlexSlider -->
 			</div>
 			<div class="clear"></div>
 		</div>

@@ -67,7 +67,7 @@ if (isset($_GET['cartId'])) {
 									<form action="" method="post">
 										<input type="hidden" name="cartId" min="0" value="<?php echo $result['cartId'] ?>" />
 										<input type="number" name="quantity" min="0" value="<?php echo $result['quantity'] ?>" />
-										<input type="submit" name="submit" value="Update" />
+										<button type="submit" name="submit" class="btn btn-primary" style="height: 31px; flex-direction: column; justify-content: center; ">cập nhật</button>
 									</form>
 								</td>
 								<td><?php
@@ -110,22 +110,23 @@ if (isset($_GET['cartId'])) {
 								?></td>
 						</tr>
 					</table>
-					<div class="shopping">
-						<div class="shopleft">
-							<a href="index.php"> <img src="images/shop.png" alt="" /></a>
+					<div class="row">
+						<div class="col">
+							<button type="button" class="btn btn-primary"><a class="text-reset" href="index.php">Tiếp tục mua hàng</a></button>
 						</div>
-						<div class="shopright">
-							<a href="login.php"> <img src="images/check.png" alt="" /></a>
+						<div class="col">
+							<button type="button" class="btn btn-warning"><a class="text-reset" href="login.php">Thanh toán</a></button>
 						</div>
 					</div>
 				<?php
 				} else {
-					echo "<h2 style='width: 100%; font-size: 25px;'>Không có sản phẩm nào trong giỏ hàng</h2>";				
+					echo "<h2 style='width: 100%; font-size: 25px;'>Không có sản phẩm nào trong giỏ hàng</h2>";
 				?>
-				<div class="shop" style="display: flex; justify-content: center;">
-					<a href="index.php"> <img src="images/shop.png" alt="" /></a>
-				</div>
-				<?php 
+					<div class="shop" style="display: flex; justify-content: center;">
+						<button type="button" class="btn btn-primary"><a class="text-reset" href="index.php">Tiếp tục mua hàng</a></button>
+
+					</div>
+				<?php
 				}
 				?>
 			</div>
@@ -133,7 +134,7 @@ if (isset($_GET['cartId'])) {
 		</div>
 		<div class="clear"></div>
 	</div>
+	<?php
+	include 'inc/footer.php';
+	?>
 </div>
-<?php
-include 'inc/footer.php';
-?>

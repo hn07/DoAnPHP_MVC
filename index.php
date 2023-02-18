@@ -55,7 +55,6 @@ if ($login_check == false) {
 											<!-- <a href="" class="text-reset">
                                                 <p class="mb-3"><?php echo $fm->textShorten($result['description'], 30) ?></p>
                                             </a> -->
-
 											<a href="details.php?productid=<?php echo $result['productId'] ?>" ><input type="submit" class="buysubmit" name="submit" value="Đặt hàng" /></a>
 											
 										</div>
@@ -110,8 +109,9 @@ if ($login_check == false) {
 											<div href="" class="text-reset">
 												<h3 style="color: red;"><?php echo $fm->product_price($result_new['price']) . " VNĐ" ?></h3>
 											</div>
+											<a href="details.php?productid=<?php echo $result['productId'] ?>" ><input type="submit" class="buysubmit" name="submit" value="Đặt hàng" /></a>
 
-											<button type="button" class="btn btn-primary"><a class="text-reset" href="details.php?productid=<?php echo $result_new['productId'] ?>" class="details">Đặt hàng</a></button>
+											<!-- <button type="button" class="btn btn-primary"><a class="text-reset" href="details.php?productid=<?php echo $result_new['productId'] ?>" class="details">Đặt hàng</a></button> -->
 
 										</div>
 

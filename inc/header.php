@@ -116,7 +116,7 @@ header("Cache-Control: max-age=2592000");
 					Session::destroy();
 				}
 				?>
-				<div class="btn bg-secondary  shadow-5" style="width: 150px; margin-left: 10px;" >
+				<div class="btn bg-secondary  shadow-5" style="width: 150px; margin-left: 10px;">
 					<?php
 					$login_check = Session::get('login_customer');
 					if ($login_check == false) {
@@ -151,3 +151,4 @@ header("Cache-Control: max-age=2592000");
 				<div class="clear"></div>
 			</ul>
 		</div>
+		
