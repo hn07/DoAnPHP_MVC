@@ -124,7 +124,7 @@ if ($login_check == false) {
 						?>
 					</div>
 				</div>
-		</div>
-		<?php
+				<?php
 		include 'inc/footer.php';
 		?>
+		</div>

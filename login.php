@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
 		</div>
 		<div class="clear"></div>
 	</div>
-</div>
-<?php
+	<?php
 include 'inc/footer.php';
 ?>
+</div>
